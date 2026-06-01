@@ -1,0 +1,243 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #ff4d00; /* Naranja mecánico */
+    --dark-bg: #1a1a1a;
+    --light-text: #f4f4f4;
+    --gray-card: #2d2d2d;
+    --card-height: 350px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--light-text);
+    background-color: #121212;
+    scroll-behavior: smooth;
+}
+
+/* Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 10%;
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.logo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero Section con Imagen de Motores */
+.hero {
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1598209279122-8541213a0387?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+/* Sección de Servicios */
+.services {
+    padding: 5rem 10%;
+    background-color: #121212;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 4rem;
+    color: var(--primary-color);
+}
+
+/* Grid de Tarjetas 3D */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    perspective: 1000px; /* Necesario para el efecto 3D */
+}
+
+.card-container {
+    height: var(--card-height);
+    cursor: pointer;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d; 
+}
+
+/* El giro ocurre aquí */
+.card-container:hover .card {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Oculta la parte que no está de frente */
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+/* Lado Frontal */
+.card-front {
+    background: linear-gradient(45deg, #2d2d2d, #1a1a1a);
+    color: white;
+}
+
+.card-front h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.btn-detail {
+    margin-top: 2rem;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Lado Trasero (Detalle escondido) */
+.card-back {
+    background: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg); /* El lado trasero empieza rotado */
+}
+
+.card-back h3 {
+    font-family: 'Bebas Neue', cursive;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 0.5rem;
+}
+
+.card-back ul {
+    list-style: none;
+    text-align: left;
+}
+
+.card-back ul li {
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.card-back ul li::before {
+    content: '🔧';
+    margin-right: 10px;
+}
+
+/* Footer */
+footer {
+    background: #000;
+    padding: 4rem 10%;
+    text-align: center;
+    border-top: 2px solid var(--primary-color);
+}
+
+.motivational-quote {
+    font-style: italic;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    color: #ddd;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botón WhatsApp */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 65px;
+    height: 65px;
+    background-color: #25d366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+    z-index: 2000;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.15);
+}
+
+.whatsapp-btn img {
+    width: 40px;
+}
